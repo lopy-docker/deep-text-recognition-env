@@ -44,7 +44,7 @@ jobs:
           build-args: |
             VARIANT=${{ matrix.variant }}
           tags: |
-            lopydev/deep-text-recognition:${VARIANT}
-            ghcr.io/lopy-docker/deep-text-recognition:${VARIANT}
+            lopydev/deep-text-recognition:${{ matrix.variant }}
+            ghcr.io/lopy-docker/deep-text-recognition:${{ matrix.variant }}
 
             
