@@ -11,6 +11,11 @@ jobs:
     permissions:
       packages: write
       contents: read
+    strategy:
+      matrix:
+        variant: 
+          - "1.8.1-cuda11.1-cudnn8-runtime"
+          - "1.5-cuda10.1-cudnn7-runtime"
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -36,8 +41,10 @@ jobs:
         with:
           push: true
           context: .
+          build-args: |
+            VARIANT=${{ matrix.variant }}
           tags: |
-            lopydev/deep-text-recognition:latest
-            ghcr.io/lopy-docker/deep-text-recognition:latest
+            lopydev/deep-text-recognition:${VARIANT}
+            ghcr.io/lopy-docker/deep-text-recognition:${VARIANT}
 
             

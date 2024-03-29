@@ -1,4 +1,6 @@
-FROM pytorch/pytorch:1.5-cuda10.1-cudnn7-runtime
+ARG VARIANT=1
+
+FROM pytorch/pytorch:${VARIANT}
 
 # Install apt dependencies
 RUN apt update && apt-get install -y libglib2.0-0 libsm6 libxrender1 libxext6 libgl1 git \
