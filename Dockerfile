@@ -10,6 +10,7 @@ RUN apt update && apt-get install -y libglib2.0-0 libsm6 libxrender1 libxext6 li
     && sed -i '/print(contextual_feature.size())/d' /app/model.py  \
     && sed -i 's/h_size = 32/h_size = opt.imgH/' /app/transform_to_onnx.py \
     && sed -i 's/w_size = 100/w_size = opt.imgW/' /app/transform_to_onnx.py \
-    && apt-get autoremove -y && apt-get autoclean -y && rm -rf /var/cache/apt/*
+    && apt-get autoremove -y && apt-get autoclean -y && rm -rf /var/cache/apt/* \
+    && pip install onnxconverter_common --use-feature=2020-resolver onnxmltools
 
 WORKDIR /app
